@@ -492,14 +492,14 @@ class CodeEditorXBlock(StudioEditableXBlockMixin,XBlock):
     def get_snippet_code(self,request, snippet_id):
         data = {}
         #import ipdb; ipdb.set_trace()
-        # data['language'], data['code'] = get_code_by_snippet(snippet_id)
+        #data['language'], data['code'] = get_code_by_snippet(snippet_id)
         coding_results = self.objects.filter(snippet_id=snippet_id)
         if coding_results.exists:
             result = coding_results.first()
             data["language"] = result.snippet_language
             data["code"] = result.snippet_text
 
-        return data
+        return json.dumps(data)
 
     @XBlock.json_handler
     def save_or_update_snippet_code(self,request,unused_suffix=''):

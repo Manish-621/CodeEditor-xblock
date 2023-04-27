@@ -257,7 +257,41 @@ function CodeEditorXBlock(runtime, element, init_args){
                         throw new Error("No Snippet ID to fetch code");
                     }
                     let snippet_id = $('.snippet_id' ).val();
-                    $.get(url+snippet_id, function(data,status){
+                    console.log(url+snippet_id);
+                    $.ajax({
+                        type: 'GET',
+                        url: url+snippet_id,
+                        success: function(data, status){
+                                    if(status == "success"){
+                                        $('#snippetid' ).text(snippet_id);
+                                        let languageType = '';
+                                        if(['c', 'cpp', 'java', 'python', 'php', 'javascript'].includes(data['language'])){
+                                            $('#languageTypeChange' ).val('BACKEND');
+                                            languageType = 'BACKEND';
+                                        }
+                                        else if(['mssql', 'mysql', 'oracle'].includes(data['language'])){
+                                            $('#languageTypeChange' ).val('DATABASE');
+                                            languageType = 'DATABASE';
+                                        }
+                                        else if(['html', 'javascript', 'css'].includes(data['language'])){
+                                            $('#languageTypeChange' ).val('FRONTEND');
+                                            languageType = 'FRONTEND';
+                                        }
+                                        else{
+                                            $('#languageTypeChange' ).val('DEVOPS');
+                                            languageType = 'DEVOPS';
+                                        }
+                                        $('#languageTypeChange' ).trigger('change');
+                                        _Editor_Ops._changeEditor(languageType, data['language'], data['code']);
+                                    }
+                                },
+                        error: function() {
+                            $('#runBtn' ).prop('disabled', false);
+                            $('.output-terminal' ).html("<div>Got unexpected response<div>");
+                        },
+
+                    });
+                    /*$.get(url+snippet_id, function(data,status){
                         if(status == "success"){
                             $('#snippetid' ).text(snippet_id);
                             let languageType = '';
@@ -280,7 +314,7 @@ function CodeEditorXBlock(runtime, element, init_args){
                             $('#languageTypeChange' ).trigger('change');
                             _Editor_Ops._changeEditor(languageType, data['language'], data['code']);
                         }
-                    });
+                    });*/
                 },
 
                 _init : function(){
