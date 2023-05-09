@@ -68,7 +68,7 @@ def save_or_update_code(language, filename, content, snippet_id) :
 ###
 def run_backend_code(filename, content, stdin, language):
     if CODE_COMPILER_OPTION == 1:
-        return run_backend_tests_judge0(filename, content, stdin, language)
+        return run_backend_judge0(filename, content, stdin, language)
     elif CODE_COMPILER_OPTION == 2:
         return run_backend_glot(filename, content, stdin, language)
 
