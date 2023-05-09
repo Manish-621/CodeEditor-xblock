@@ -68,7 +68,7 @@ def save_or_update_code(language, filename, content, snippet_id) :
 ###
 def run_backend_code(filename, content, stdin, language):
     if CODE_COMPILER_OPTION == 1:
-        return run_backend_judge0(filename, content, stdin, language)
+        return run_backend_tests_judge0(filename, content, stdin, language)
     elif CODE_COMPILER_OPTION == 2:
         return run_backend_glot(filename, content, stdin, language)
 
@@ -128,16 +128,18 @@ def run_backend_glot(filename, content, stdin, language):
 # Method to run backend code using judge0 compiler
 ###
 def run_backend_judge0(filename, content, stdin, language):
+    
     data = {
         "language_id":judge0_language_codes[language],
         "source_code":content,
         "stdin":stdin
     }
-    r = requests.post(url = "http://15.207.130.107:8099/submissions"+'/?wait=true', data = data)
+    headers = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0'}
+    r = requests.post(url = 'http://15.207.130.107:8099/submissions'+'/?wait=true', data = data, verify=False, timeout=10, headers=headers)
 
     # extracting response text
     data_response = json.loads(r.text)
-    status_id = data_response['status']['id']
+    status_id = data_response['status']['id']   
     if status_id == 6 :
         data_response['stderr'] = data_response['compile_output']
     elif status_id in [1,2]:
