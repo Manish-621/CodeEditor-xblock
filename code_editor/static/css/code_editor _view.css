@@ -1,282 +1,393 @@
-/* CSS for CodeeditorXBlock */
-
-.codeeditor_block .count {
-    font-weight: bold;
-}
-
-.codeeditor_block p {
-    cursor: pointer;
-}
- #myDiv {
-  border: 1px dashed #ccc;
-  padding: 20px;
-  height:135px;
-  
-}
-  
-  hr.hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #e5e7e8;
-  padding: 0;
-  width: 100%;
-}
-
-.light {
-  color: #9ca3a8;
-}
-#img_loader {
-    position: relative;
-    right: -529px;
-}
-
-.error_msgcomplile_error{
-    background-color: #e67676;
-    border-radius: 3px;
-    color: #fff;
-    font-weight: 600;
-    margin-right: 20px;
-    padding: 10px;
-}
-
-
-.container {
-    background-color: #f1f1f1;
-    bottom: 0;
-    height: auto;
-    min-height: 250px;
-    min-width: 602px;
-    overflow: auto;
-    top: 100px;
-    width: 221px;
-}
-.compile_button {
-    background-color: #0099fd;
-    color: snow;
-    font-family: arial;
-    font-size: unset;
-    position: relative;
-    right: -455px;
-}
-#editor {
-    position: relative;
-    height:100%;
-    border: #bbaa solid 1px;
-
-}
-.code-container{
-    height:calc(100vh);
-    display: flex;
-    flex-direction: column;
-    /*margin-top: -2em;*/
-    width:100%;
-    padding-bottom: 20px;
-}
-
-.code-header{
-    text-align: right;
-    padding:10px;
-}
-
-.code-body{
-    display: flex;
-    flex-direction: row;
-    flex:1;
-}
-.code-statement-con{
-    flex:1;
-    padding:5px;
-    margin-right: 10px;
-    box-shadow: 2px 2px 2px 2px #bbbbbb;
-}
-
-.code-editor-con{
-    flex:2;
-    display: flex;
-    flex-direction: column;
+.xblock--drag-and-drop--editor {
     width: 100%;
-    background-color: white;
-    padding: 0.2%;
-    box-shadow: 2px -2px 6px lightgrey;
-}
-
-.code-editor-form{
-    display: flex;
-    flex-direction: row;
-    font-size: 0.8em;
-}
-
-.code-editor{
-    flex:1;
-}
-.code-title{
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.code-description{
-    font-size: 0.8em;
-}
-
-.my-code-editor {
     height: 100%;
-    width:100%;
-}
-
-.test-case-con{
+    margin-bottom: 0 !important;  /* Remove an undesired whitespace from Studio */
+  }
+  
+  .modal-window .drag-builder  {
+      width: 100%;
+      height: calc(100% - 55px);
+      position: absolute;
+      overflow-y: scroll;
+  }
+  
+  /*** Drop Target ***/
+  .xblock--drag-and-drop--editor .zone {
+      position: absolute;
+  
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+  
+      /* Internet Explorer 10 */
+      -ms-flex-pack:center;
+      -ms-flex-align:center;
+  
+      /* Firefox */
+      -moz-box-pack:center;
+      -moz-box-align:center;
+  
+      /* Safari, Opera, and Chrome */
+      -webkit-box-pack:center;
+      -webkit-box-align:center;
+  
+      /* W3C */
+      box-pack:center;
+      box-align:center;
+  
+      border: 1px dotted #565656;
+      box-sizing: border-box;
+  }
+  
+  .xblock--drag-and-drop--editor .zone p {
+      width: 100%;
+      font-family: Arial;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+  }
+  
+  /** Builder **/
+  .xblock--drag-and-drop--editor .hidden {
+      display: none !important;
+  }
+  
+  .xblock--drag-and-drop--editor .tab {
+      width: 100%;
+      background-color: #eee;
+      padding: 3px 0;
+      position: relative;
+  }
+  
+  .xblock--drag-and-drop--editor .tab::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .xblock--drag-and-drop--editor .tab h3 {
+      font-size: 18px;
+  }
+  
+  .xblock--drag-and-drop--editor .tab h4,
+  .xblock--drag-and-drop--editor .tab .h4 {
+      display: block;
+      font-size: 16px;
+      margin: 20px 0 8px 0;
+  }
+  
+  .xblock--drag-and-drop--editor .tab .items-form .item .row:first-of-type .h4 {
+      margin-top: 0;
+  }
+  
+  .xblock--drag-and-drop--editor .tab-header,
+  .xblock--drag-and-drop--editor .tab-content {
+      width: 96%;
+      margin: 2%;
+  }
+  
+  .xblock--drag-and-drop--editor .items {
+      width: calc(100% - 515px);
+      margin: 10px 0 0 0;
+  }
+  
+  .xblock--drag-and-drop--editor .target-image-form .background-image-type {
+      display: block;
+      margin-bottom: 8px;
+  }
+  
+  .xblock--drag-and-drop--editor .target-image-form .background-auto {
+      margin-top: 20px;
+  }
+  
+  .xblock--drag-and-drop--editor .target-image-form input[type="text"] {
+      width: 50%;
+  }
+  .xblock--drag-and-drop--editor .target-image-form textarea {
+      width: 97%;
+  }
+  
+  .xblock--drag-and-drop--editor .target-image-form textarea {
+      display: block;
+  }
+  
+  .xblock--drag-and-drop--editor .target-image-form .background-auto .autozone-layout,
+  .xblock--drag-and-drop--editor .target-image-form .background-auto .autozone-size {
+      width: 4em;
+  }
+  
+  .xblock--drag-and-drop--editor input,
+  .xblock--drag-and-drop--editor textarea {
+      box-sizing: border-box;
+      font-size: 14px;
+      background: #fff;
+      box-shadow: none;
+      padding: 6px 8px;
+      border: 1px solid #b2b2b2;
+      color: #4c4c4c;
+  }
+  
+  .xblock--drag-and-drop--editor label > span {
+      display: inline-block;
+      margin-bottom: 0.25em;
+  }
+  
+  .xblock--drag-and-drop--editor label.checkbox-label {
+      font-size: 14px;
+  }
+  
+  /* Main Tab */
+  .xblock--drag-and-drop--editor .feedback-tab input,
+  .xblock--drag-and-drop--editor .feedback-tab select {
+      display: block;
+  }
+  
+  .xblock--drag-and-drop--editor .feedback-tab input[type=checkbox] {
+      display: inline-block;
+  }
+  
+  /* Zones Tab */
+  .xblock--drag-and-drop--editor .zones-tab .zone-editor {
+    position: relative;
     display: flex;
     flex-direction: row;
-}
-
-.output-terminal{
-    padding:10px;
-    background: black;
-    flex:1;
-    color:#ffffff;
-    font-size: 0.7em;
-    width: 100%;
-    overflow-x: auto;
-    transition: max-height 0.15s ease-out;
-}
-.code-footer {
-    padding-left: 1%;
-}
-.code-testcase{
-    display: flex;
-    flex-direction: column;
-    height:150px;
-    padding-top: 0px;
-    width:100%;
-    padding: 0px 7px 7px;
-    background-color: rgba(180, 180, 180, 0.8);
-}
-
-.modal-body{
-    font-size: 0.8em;
-}
-
-.loading{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-form label {
-    display: inline !important;
-}
-.btn {
-border: 1px solid #d2c9c9;
-border-radius: 3px;
-box-shadow: inset 0 1px 0 0 #fff;
-color: #333;
-display: inline-block;
-font-size: inherit;
-font-weight: bold;
-background-color: #f1f1f1;
-background-image: -webkit-linear-gradient(#f1f1f1,#d9d1d1);
-background-image: linear-gradient(#f1f1f1,#d9d1d1);
-padding: 7px 18px;
-text-decoration: none;
-text-shadow: 0 1px 0 #fcfbfb;
-background-clip: padding-box;
-font-size: 0.8125em;
-
-}
-.btn:hover {
-border: 1px solid #d2c9c9;
-border-radius: 3px;
-box-shadow: inset 0 1px 0 0 #fff;
-color: #333;
-}
-
-.code-editor-form label{
-    color: #3277a8e8;
-    font-weight: bold;
-}
-
-.scrolbar::-webkit-scrollbar {
-    width: 6px;
-    height: 55px;
-    border-radius: 10%;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
   }
-
-  /* Track */
-  .scrolbar::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
+  
+  .xblock--drag-and-drop--editor .zones-tab .tab-content .controls {
+    width: 40%;
+    max-width: 50%;
+    min-width: 330px;
   }
-
-  /* Handle */
-  .scrolbar::-webkit-scrollbar-thumb {
-    background:#3277a8e8;
-    border-radius: 10px;
+  
+  .xblock--drag-and-drop--editor .zones-tab .tab-content .target {
+    position: relative;
+    border: 1px solid #ccc;
+    overflow: hidden;
   }
-
-  /* Handle on hover */
-  .scrolbar::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  .xblock--drag-and-drop--editor .zones-tab .tab-content .target-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
   }
-
-
-  .editorLable:focus{
-    outline: 0;
-    box-shadow: 0 0 5px blue;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row {
+      background-color: #b1d9f1;
+      padding: 1rem;
+      margin-bottom: 2rem;
   }
-
-  .xblock p{
-    color: #444;
-    font-size: 14px !important;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row label {
+      display: block;
   }
-  .editorLable{
-    margin-right: 10px;
-    background-color:snow ;
-    border-color: #3277a8e8 ;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    padding: 4px;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row label > span {
+      display: inline-block;
+      font-size: 14px;
+      min-width: 8rem;
   }
-  .result_table th{
-      text-decoration: underline;
-      padding-top: 10px;
-      padding-right: 20px;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row label > input {
+      width: 63%;
+      margin: 0 0 5px;
+      line-height: 2.664rem;  /* .title gets line-height from a Studio rule that does not apply to .description;
+                                 here we make sure that both input fields get the same value for line-height */
   }
-  .result_table td{
-      padding-right: 20px;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row .layout {
+      margin: 2rem 0;
   }
-  .devops_hint{
-      display:none;
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row .layout label {
+      display: inline-block;
+      width: 45%;
   }
-  .devops_answer{
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row .layout .zone-size,
+  .xblock--drag-and-drop--editor .zones-form .zone-row .layout .zone-coord {
+      width: 35%;
+      line-height: inherit;
+  }
+  
+  .xblock--drag-and-drop--editor .zones-form .zone-row .alignment {
+      margin-bottom: 15px;
+  }
+  
+  
+  .xblock--drag-and-drop--editor .feedback-form textarea {
+      width: 99%;
+      height: 128px;
+  }
+  
+  .xblock--drag-and-drop--editor .form-help {
+      margin: 0.5rem 0 1rem;
+      font-size: 12px;
+  }
+  
+  .xblock--drag-and-drop--editor .item-styles-form,
+  .xblock--drag-and-drop--editor .items-form {
+      margin-bottom: 30px;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form .item {
+      background-color: #b1d9f1;
+      padding: 2rem;
+      margin-bottom: 2rem;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form select {
+      width: 35%;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form .zone-checkbox {
+      width: initial;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form .item-text,
+  .xblock--drag-and-drop--editor .items-form .item-image-url {
+      width: 50%;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form .item-width {
+      width: 50px;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form textarea {
+      width: 97%;
+  }
+  
+  .xblock--drag-and-drop--editor .items-form .row.advanced {
       display: none;
   }
-.btn-gradient{
-    background-image: none;
-    background-color: rgba(180, 180, 180, 0.8);
-    font-size: 14px;
-    height: 22px;
-    padding: 0px 10px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-top: 5px;
-    border-radius: 5px 5px 0px 0px;
-}
-.btn-gradient :active{
-    margin:0.1px 1px;
-}
-#hide-show-icon{
-    font-size: 20px;
-}
-#snippetid{
-    user-select: text;
-    font-weight: bold;
-    padding: 6px 15px;
-    border: 1px solid darkgray;
-    margin-left: 5px;
-    cursor: text;
-}
+  .xblock--drag-and-drop--editor .items-form .row.advanced-link {
+      font-size: 12px;
+      margin-top: 2em;
+  }
+  .xblock--drag-and-drop--editor .items-form .row.advanced-link button {
+      background: none;
+      border: none;
+      color: #4c4c4c;
+  }
+  .xblock--drag-and-drop--editor .items-form .row.advanced-link button:before {
+      content: '\25B6';
+      margin-right: 0.5em;
+  }
+  .rtl .xblock--drag-and-drop--editor .items-form .row.advanced-link button:before {
+      content: '\25C0';
+      margin-left: 0.5em;
+      margin-right: 0;
+  }
+  
+  .xblock--drag-and-drop-editor .items-form .zone-checkbox-row {
+      margin-bottom: 0px;
+  }
+  
+  /** Buttons **/
+  .xblock--drag-and-drop--editor .btn {
+      background-color: #1d5280;
+      color: #fff;
+      border: 1px solid #156ab4;
+      border-radius: 6px;
+      padding: 5px 10px;
+  }
+  
+  .xblock--drag-and-drop--editor .btn:hover,
+  .xblock--drag-and-drop--editor .btn:focus {
+      background-color: #296ba5;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  }
+  
+  .xblock--drag-and-drop--editor .remove-zone,
+  .xblock--drag-and-drop--editor .remove-item {
+      float: right;
+      padding: 3px;
+      border-radius: 12px;
+  }
+  .rtl .xblock--drag-and-drop--editor .remove-zone,
+  .rtl .xblock--drag-and-drop--editor .remove-item {
+      float: left;
+  }
+  
+  .xblock--drag-and-drop--editor .icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+      display: inline-block;
+  }
+  
+  .xblock--drag-and-drop--editor .remove-zone .icon,
+  .xblock--drag-and-drop--editor .remove-item .icon {
+      display: block;
+  }
+  
+  .xblock--drag-and-drop--editor .tab .field-error {
+      outline: none;
+      box-shadow: 0 0 10px 0 darkred;
+      /* Needed because Safari won't show the box-shadow for textareas otherwise. */
+      --webkit-appearance: none;
+  }
+  
+  .xblock--drag-and-drop--editor .icon.add:before {
+      content: '';
+      height: 10px;
+      width: 2px;
+      background-color: #fff;
+      position: relative;
+      display: inline;
+      float: left;
+      top: 2px;
+      left: 6px;
+  }
+  
+  .xblock--drag-and-drop--editor .icon.add:after {
+      content: '';
+      height: 2px;
+      width: 10px;
+      background-color: #fff;
+      position: relative;
+      display: inline;
+      float: left;
+      top: 6px;
+      left: 0;
+  }
+  
+  .xblock--drag-and-drop--editor .icon.remove:before {
+      content: '';
+      height: 10px;
+      width: 2px;
+      background-color: #fff;
+      position: relative;
+      display: inline;
+      float: left;
+      top: 2px;
+      left: 6px;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+  
+  .xblock--drag-and-drop--editor .icon.remove:after {
+      content: '';
+      height: 2px;
+      width: 10px;
+      background-color: #fff;
+      position: relative;
+      display: inline;
+      float: left;
+      top: 6px;
+      left: 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+  
+  .modal-window .modal-content .editor-with-buttons.xblock--drag-and-drop--editor {
+      margin-bottom: 0;
+  }
